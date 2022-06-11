@@ -7,13 +7,30 @@
   },
   "host": "localhost:3000",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "clientes",
+      "description": "Clientes resource"
+    },
+    {
+      "name": "produtos",
+      "description": "Produtos resource"
+    },
+    {
+      "name": "vendas",
+      "description": "Vendas resource"
+    }
+  ],
   "schemes": [
     "http"
   ],
   "paths": {
     "/api/clientes": {
       "get": {
-        "description": "",
+        "tags": [
+          "clientes"
+        ],
+        "description": "Buscar Clientes",
         "parameters": [],
         "responses": {
           "200": {
@@ -25,7 +42,10 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "clientes"
+        ],
+        "description": "Cadastro de Clientes",
         "parameters": [
           {
             "name": "body",
@@ -60,8 +80,11 @@
       }
     },
     "/api/clientes/{id}": {
-      "delete": {
-        "description": "",
+      "get": {
+        "tags": [
+          "clientes"
+        ],
+        "description": "Buscar Cliente pelo ID",
         "parameters": [
           {
             "name": "id",
@@ -78,62 +101,12 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/api/produtos": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
       },
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nomeProd": {
-                  "example": "any"
-                },
-                "validade": {
-                  "example": "any"
-                },
-                "preco": {
-                  "example": "any"
-                },
-                "valorPromocao": {
-                  "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/produtos/{id}": {
       "delete": {
-        "description": "",
+        "tags": [
+          "clientes"
+        ],
+        "description": "Deletar Cliente Pelo ID",
         "parameters": [
           {
             "name": "id",
@@ -150,24 +123,19 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "cors()/api/clientes": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
       },
-      "post": {
-        "description": "",
+      "put": {
+        "tags": [
+          "clientes"
+        ],
+        "description": "Atualizar Dados Clientes",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
@@ -200,9 +168,66 @@
         }
       }
     },
-    "cors()/api/clientes/{id}": {
-      "delete": {
-        "description": "",
+    "/api/produtos": {
+      "get": {
+        "tags": [
+          "produtos"
+        ],
+        "description": "Buscar Produtos",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "produtos"
+        ],
+        "description": "Cadastrar Produtos",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeProd": {
+                  "example": "any"
+                },
+                "preco": {
+                  "example": "any"
+                },
+                "valorPromocao": {
+                  "example": "any"
+                },
+                "descricao": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/produtos/{id}": {
+      "get": {
+        "tags": [
+          "produtos"
+        ],
+        "description": "Buscar Produto Pelo ID",
         "parameters": [
           {
             "name": "id",
@@ -219,7 +244,210 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "produtos"
+        ],
+        "description": "Deletar Produto Pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "produtos"
+        ],
+        "description": "Atualizar Produtos Pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeProd": {
+                  "example": "any"
+                },
+                "preco": {
+                  "example": "any"
+                },
+                "valorPromocao": {
+                  "example": "any"
+                },
+                "descricao": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/vendas": {
+      "get": {
+        "tags": [
+          "vendas"
+        ],
+        "description": "Buscar Venda",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "vendas"
+        ],
+        "description": "Cadastro de Venda",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fk_clientes": {
+                  "example": "any"
+                },
+                "fk_produtos": {
+                  "example": "any"
+                },
+                "quantidade": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/vendas/{id}": {
+      "get": {
+        "tags": [
+          "vendas"
+        ],
+        "description": "Buscar Venda Pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "vendas"
+        ],
+        "description": "Deletar Venda Pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "vendas"
+        ],
+        "description": "Atualizar Vendas Pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fk_clientes": {
+                  "example": "any"
+                },
+                "fk_produtos": {
+                  "example": "any"
+                },
+                "quantidade": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     }
+
   }
 }

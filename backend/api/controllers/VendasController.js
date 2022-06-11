@@ -1,22 +1,24 @@
 const Services = require('../services/Services')
-const clientesServices = new Services('Clientes')
+const vendasServices = new Services('Vendas')
+const moment = require("moment");
 
 
-class ClientesController {
+class VendasController {
 
   static async read(req, res) {
     try {
-      const read = await clientesServices.read()
+      const read = await vendasServices.read()
       return res.status(200).json(read)
     } catch (error) {
       return res.status(500).json(error.message)
     }
   }
 
+  
   static async readOne(req, res) {  
     const { id } = req.params
     try {
-      const oneCli = await clientesServices.readOne({ id })
+      const oneCli = await vendasServices.readOne({ id })
       return res.status(200).json(oneCli)
     } catch (error) {
       return res.status(500).json(error.message)
@@ -24,15 +26,15 @@ class ClientesController {
   }
 
   static async create(req, res) {
-    const nwCliente = req.body
+    const nwVend = req.body
     try {
-      const newCliente = await clientesServices.create({ 
-          nome: req.body.nome, 
-          dataNascimento: req.body.dataNascimento, 
-          email: req.body.email, 
-          rg: req.body.rg 
+      const newVenda = await vendasServices.create({ 
+          fk_clientes: req.body.fk_clientes, 
+          fk_produtos: req.body.fk_produtos, 
+          quantidade: req.body.quantidade, 
+          dataVenda: moment().format("YYYY-MM-DD")
         })
-      return res.status(200).json(newCliente)
+      return res.status(200).json(newVenda)
     } catch (err) {
       return  res.status(500).json({
         message: err.errors.map(e => e.message)
@@ -40,26 +42,26 @@ class ClientesController {
     }
   }
 
-
   static async update(req, res) {  
     const { id } = req.params
-    const { nome, dataNascimento, email, rg }  = req.body
+    const { fk_clientes, fk_produtos, quantidade }  = req.body
     try {
-      await clientesServices.update(
-          {nome:nome, dataNascimento:dataNascimento, email:email, rg:rg}, 
+      await vendasServices.update(
+          {fk_clientes:fk_clientes, fk_produtos:fk_produtos, quantidade:quantidade}, 
           { id: Number(id) })
-      return res.status(200).json({ mensagem: `Cliente ID:${id} atualizado` })
+      return res.status(200).json({ mensagem: `Venda ID:${id} atualizado` })
     } catch (error) {
       return  res.status(500).json({
         message: err.errors.map(e => e.message)
       });
     }
   }
+  
 
   static async delete(req, res) {
     const { id } = req.params
     try {
-      await clientesServices.delete(id)
+      await vendasServices.delete(id)
       return res.status(200).json({ mensagem: `id ${id} deletado com sucesso!` })
     } catch (error) {
       return res.status(500).json(error.message)
@@ -70,4 +72,4 @@ class ClientesController {
 }
 
 
-module.exports = ClientesController
+module.exports = VendasController

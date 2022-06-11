@@ -13,12 +13,22 @@ class ProdutosController {
     }
   }
 
+  static async readOne(req, res) {  
+    const { id } = req.params
+    try {
+      const oneProd = await produtosServices.readOne({ id })
+      return res.status(200).json(oneProd)
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
+
   static async create(req, res) {
     const nwProd = req.body
     try {
       const newProd = await produtosServices.create({ 
           nomeProd: req.body.nomeProd, 
-          validade: req.body.validade, 
           preco: req.body.preco, 
           valorPromocao: req.body.valorPromocao,
           descricao: req.body.descricao 
@@ -30,6 +40,20 @@ class ProdutosController {
       });
     }
   }
+
+  static async update(req, res) {  
+    const { id } = req.params
+    const { nomeProd, preco, valorPromocao, descricao }  = req.body
+    try {
+      await produtosServices.update(
+          {nomeProd:nomeProd, preco:preco, valorPromocao:valorPromocao, descricao:descricao}, 
+          { id: Number(id) })
+      return res.status(200).json({ mensagem: `Produto ID:${id} atualizado` })
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
 
   static async delete(req, res) {
     const { id } = req.params

@@ -9,6 +9,10 @@ class Services {
         return database[this.nameModel].findAll()
     }
 
+    async readOne(where = {}) {
+        return database[this.nameModel].findOne({ where: { ...where } })
+      }
+
     async create(data) {
         return database[this.nameModel].create(data)
     }
@@ -18,6 +22,10 @@ class Services {
     }
 
     
+  async update(dadosAtualizados, where, transacao = {}){
+    return database[this.nameModel]
+      .update(dadosAtualizados, { where: { ...where } }, transacao)
+  }
 
 }
 

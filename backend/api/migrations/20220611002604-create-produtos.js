@@ -11,14 +11,11 @@ module.exports = {
       nomeProd: {
         type: Sequelize.STRING
       },
-      validade: {
-        type: Sequelize.DATEONLY
-      },
       preco: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE(10,2)
       },
       valorPromocao: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE(10,2)
       },
       descricao: {
         type: Sequelize.TEXT

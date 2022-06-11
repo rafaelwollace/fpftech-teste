@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      Clientes.hasMany(models.Vendas, {
+        foreignKey: 'fk_clientes'
+      })
     }
   }
   Clientes.init({
@@ -32,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'Campo Datanpm de Nascimento não pode ser vazio.'
+          msg: 'Campo Data de Nascimento não pode ser vazio.'
         },
       },
     },
@@ -47,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: "Digite um E-mail valido"
         },
         notNull: {
-          msg: 'Campo RG não pode ser vazio.'
+          msg: 'Campo E-mail não pode ser vazio.'
         },
       }
     },
