@@ -1,0 +1,42 @@
+{
+  "name": "backend-api",
+  "version": "1.0.0",
+  "description": "Projeto FPF TECH",
+  "main": "./api/index.js",
+  "scripts": {
+    "swagger-autogen": "node swagger.js",
+    "start": "nodemon ./api/index.js",
+    "database": "npx sequelize-cli db:create",
+    "migrate": "npx sequelize-cli db:migrate",
+    "seed": "npx sequelize-cli db:seed:all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com"
+  },
+  "keywords": [],
+  "author": "Rafael Cunha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/"
+  },
+  "homepage": "https://github.com/",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "path": "^0.12.7",
+    "sequelize": "^6.17.0",
+    "sequelize-cli": "^6.4.1",
+    "sqlite3": "^5.0.2",
+    "swagger-autogen": "^2.20.8",
+    "swagger-ui-express": "^4.3.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.15"
+  }
+}
