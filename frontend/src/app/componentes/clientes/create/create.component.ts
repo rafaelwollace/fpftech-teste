@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Clientes } from 'src/app/model/clientes';
+import { ClientesService } from 'src/app/services/clientes.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create',
@@ -7,9 +10,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  form: any = {
+    nome: null,
+    rg: null,
+    dataNascimento: null,
+    email: null
+  };
+
+  isSuccessful = false;
+  isFailed = false;
+  errorMessage = '';
+
+  public clientes: Clientes[] = [];
+
+  constructor(
+    private clientesServices: ClientesService,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
+      this.clientesServices.getAll().subscribe((data: Clientes[])=>{
+        this.clientes = data;
+      })
+    }
+
+  onSubmit(): void {
+    const { nome, rg, dataNascimento, email } = this.form;
+
+    this.clientesServices.create(nome, rg, dataNascimento, email).subscribe({
+      next: data => {
+        this.isFailed = false;
+        this.isSuccessful = true;
+        this.toastr.success('Cadastro Efetuado Com Sucesso!!!');
+      },
+      error: err => {
+        this.toastr.error(err.error.message);
+        this.errorMessage = err.error.message;
+        this.isFailed = true;
+      }
+    });
   }
 
 }

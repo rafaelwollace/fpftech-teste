@@ -51,7 +51,7 @@ class ClientesController {
       return res.status(200).json({ mensagem: `Cliente ID:${id} atualizado` })
     } catch (error) {
       return  res.status(500).json({
-        message: err.errors.map(e => e.message)
+        msg: err.errors.map(e => e.message)
       });
     }
   }

@@ -1,1 +1,30 @@
-<p>index works!</p>
+<div class="row py-3">
+
+  <app-create></app-create>
+
+  <br/><br/>
+  <table  class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Valor Promocional</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor = "let row of produtos">
+        <td>{{row.id}}</td>
+        <td>{{ row.nomeProd }}</td>
+        <td>R$:{{row.preco}}</td>
+        <td>R$:{{row.valorPromocao}}</td>
+        <td>{{row.descricao}}</td>
+        <td><button (click)="delete(row.id)" class="btn btn-sm btn-danger" type="button">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
