@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Clientes } from 'src/app/model/clientes';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -25,11 +26,12 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private clientesServices: ClientesService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
-      this.clientesServices.getAll().subscribe((data: Clientes[])=>{
+        this.clientesServices.getAll().subscribe((data: Clientes[])=>{
         this.clientes = data;
       })
     }
@@ -41,6 +43,7 @@ export class CreateComponent implements OnInit {
       next: data => {
         this.isFailed = false;
         this.isSuccessful = true;
+        this.router.navigateByUrl('clientes');
         this.toastr.success('Cadastro Efetuado Com Sucesso!!!');
       },
       error: err => {

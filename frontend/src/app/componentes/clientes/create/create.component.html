@@ -1,116 +1,130 @@
+<br /><br />
+
 <div class="row justify-content-center py-3">
 
-  <div class="col-12 col-md-6 ">
-      <h3 class="text-center">CADASTRO DE CLIENTES</h3>
-      <div class="modal-content rounded-5 shadow  p-4 pt-5" >
 
-            <form
-              *ngIf="!isSuccessful"
-              name="form"
-              (ngSubmit)="f.form.valid && onSubmit()"
-              #f="ngForm"
-              novalidate
-          >
+  <div class="col-12 col-md-8 ">
 
-
-            <div class="form-group">
-              <label for="nome">Nome</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Digite aqui seu Nome."
-                name="nome"
-                [(ngModel)]="form.nome"
-                required
-                #nome="ngModel"
-              />
-
-              <div *ngIf="nome.errors && f.submitted">
-                <app-mensagem
-                *ngIf="nome.errors['required']"
-                mensagem="Nome é um campo de preenchimento obrigatório."
-              ></app-mensagem>
-
-              </div>
-
+      <div class="card rounded-5 shadow" >
+        <div class="card-header">
+          <h4 class="text-center">CADASTRO DE CLIENTES</h4>
+          <div class="position-relative">
+            <div class="position-absolute top-0 end-0">
+              <button class="btn btn-primary"  href="#" [routerLink]="['/clientes/index']">
+                <i class='fa fa-arrow-left'></i><span> Voltar </span>
+              </button>
             </div>
+          </div>
+
+        </div>
+
+        <div class="card-body   p-4 pt-5">
+          <form
+          *ngIf="!isSuccessful"
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+      >
 
 
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Digite aqui seu Nome."
+            name="nome"
+            [(ngModel)]="form.nome"
+            required
+            #nome="ngModel"
+          />
 
-            <div class="form-group">
-              <label for="rg">RG</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="Digite aqui seu RG."
-                name="rg"
-                [(ngModel)]="form.rg"
-                required
-                #rg="ngModel"
-              />
+          <div *ngIf="nome.errors && f.submitted">
+            <app-mensagem
+            *ngIf="nome.errors['required']"
+            mensagem="Nome é um campo de preenchimento obrigatório."
+          ></app-mensagem>
 
-              <div *ngIf="rg.errors && f.submitted">
-                <app-mensagem
-                *ngIf="rg.errors['required']"
-                mensagem="RG é um campo de preenchimento obrigatório."
-              ></app-mensagem>
+          </div>
 
-              </div>
-
-            </div>
-
-
-            <div class="form-group">
-              <label for="dataNascimento">dataNascimento</label>
-              <input
-                type="date"
-                class="form-control"
-                name="dataNascimento"
-                [(ngModel)]="form.dataNascimento"
-                required
-                #dataNascimento="ngModel"
-              />
-
-              <div *ngIf="dataNascimento.errors && f.submitted">
-                <app-mensagem
-                *ngIf="dataNascimento.errors['required']"
-                mensagem="dataNascimento é um campo de preenchimento obrigatório."
-              ></app-mensagem>
-
-              </div>
-
-            </div>
+        </div>
 
 
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input
-                type="email"
-                class="form-control"
-                placeholder="Digite aqui seu E-mail."
-                name="email"
-                [(ngModel)]="form.email"
-                required
-                #email="ngModel"
-              />
+        <div class="form-group py-2">
+          <label for="rg">RG</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Digite aqui seu RG."
+            name="rg"
+            [(ngModel)]="form.rg"
+            required
+            #rg="ngModel"
+          />
 
-              <div *ngIf="email.errors && f.submitted">
-                <app-mensagem
-                *ngIf="email.errors['required']"
-                mensagem="Email é um campo de preenchimento obrigatório."
-              ></app-mensagem>
+          <div *ngIf="rg.errors && f.submitted">
+            <app-mensagem
+            *ngIf="rg.errors['required']"
+            mensagem="RG é um campo de preenchimento obrigatório."
+          ></app-mensagem>
 
-              </div>
+          </div>
 
-            </div>
-
-            <div class="form-group py-3">
-              <button class="w-100 btn btn-lg btn-primary btn-block">Realizar Cadastro</button>
-            </div>
-
-          </form>
+        </div>
 
 
+        <div class="form-group py-2">
+          <label for="dataNascimento">Data de Nascimento</label>
+          <input
+            type="date"
+            class="form-control"
+            name="dataNascimento"
+            [(ngModel)]="form.dataNascimento"
+            required
+            #dataNascimento="ngModel"
+          />
+
+          <div *ngIf="dataNascimento.errors && f.submitted">
+            <app-mensagem
+            *ngIf="dataNascimento.errors['required']"
+            mensagem="dataNascimento é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group py-2">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Digite aqui seu E-mail."
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            #email="ngModel"
+          />
+
+          <div *ngIf="email.errors && f.submitted">
+            <app-mensagem
+            *ngIf="email.errors['required']"
+            mensagem="Email é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+        <div class="form-group py-3">
+          <button class="w-100 btn btn-lg btn-success btn-block"><i class="fa fa-check" aria-hidden="true"></i> Realizar Cadastro</button>
+        </div>
+
+      </form>
+
+        </div>
 
     </div>
 

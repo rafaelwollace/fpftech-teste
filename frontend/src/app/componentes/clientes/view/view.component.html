@@ -1,1 +1,60 @@
-<p>view works!</p>
+
+<div class="row justify-content-center py-3">
+
+  <div class="col-12 col-md-8 ">
+
+      <div class="card rounded-5 shadow" >
+
+        <div class="card-header">
+          <h4 class="text-center">DETALHES DO CLIENTE</h4>
+          <div class="position-relative">
+            <div class="position-absolute top-0 end-0">
+              <button class="btn btn-primary"  href="#" [routerLink]="['/clientes/index']">
+                <i class='fa fa-arrow-left'></i><span> Voltar </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body   p-4 pt-5">
+            <div class="container padding-bottom-3x mb-2">
+                <div class="row">
+                    <div class="col-lg-2">
+                          <nav class="list-group">
+                            <a class="list-group-item with-badge active"><i class="fa fa-user"></i> Profile</a>
+                            <a class="list-group-item with-badge"><i class="fa fa-th"></i> ID:{{ clientes.id }}</a>
+                            <a  class="btn btn-warning m-1" [routerLink]="['/clientes/', clientes.id, 'edit']"><i class="fas fa-edit"></i></a>
+                        </nav>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+                        <div class="table-responsive margin-bottom-2x">
+                            <table class="table margin-bottom-none">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>RG</th>
+                                        <th>Data de Nascimento</th>
+                                        <th>E-mail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ clientes.nome }}</td>
+                                        <td>{{ clientes.rg }}</td>
+                                        <td>{{ clientes.dataNascimento }}</td>
+                                        <td>{{ clientes.email }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+ </div>

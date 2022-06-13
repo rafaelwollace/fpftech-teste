@@ -48,12 +48,12 @@ class ClientesController {
       await clientesServices.update(
           {nome:nome, dataNascimento:dataNascimento, email:email, rg:rg}, 
           { id: Number(id) })
-      return res.status(200).json({ mensagem: `Cliente ID:${id} atualizado` })
-    } catch (error) {
-      return  res.status(500).json({
-        msg: err.errors.map(e => e.message)
-      });
-    }
+          return res.status(200).json({ mensagem: `Cliente ID:${id} atualizado` })
+        } catch (err) {
+          return  res.status(500).json({
+            message: err.errors.map(e => e.message)
+          });
+        }
   }
 
   static async delete(req, res) {

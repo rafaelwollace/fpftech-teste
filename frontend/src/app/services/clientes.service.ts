@@ -17,9 +17,19 @@ export class ClientesService {
     return this.httpClient.get<Clientes[]>(baseUrl);
   }
 
+  find(id:number): Observable<any> {
+      return this.httpClient.get(`${baseUrl}/${id}`)
+  }
 
   create(nome: string, rg: number, dataNascimento: Date, email: string): Observable<any> {
     return this.httpClient.post(baseUrl, {
+      nome, rg, dataNascimento, email
+    });
+  }
+
+
+  update(id: number, nome: string, rg: number, dataNascimento: Date, email: string): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/${id}`, {
       nome, rg, dataNascimento, email
     });
   }

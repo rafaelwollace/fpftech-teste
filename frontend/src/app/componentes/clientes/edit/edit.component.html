@@ -1,1 +1,132 @@
-<p>edit works!</p>
+<br /><br />
+
+<div class="row justify-content-center py-3">
+
+
+  <div class="col-12 col-md-8 ">
+
+      <div class="card rounded-5 shadow" >
+        <div class="card-header">
+          <h4 class="text-center">ATUALIZAÇÃO DO CLIENTE - ID:{{ clientes.id }}</h4>
+          <div class="position-relative">
+            <div class="position-absolute top-0 end-0">
+              <button class="btn btn-primary"  href="#" [routerLink]="['/clientes/index']">
+                <i class='fa fa-arrow-left'></i><span> Voltar </span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card-body   p-4 pt-5">
+          <form
+          *ngIf="!isSuccessful"
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+          >
+
+
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Digite aqui seu Nome."
+            name="nome"
+            [(ngModel)]="clientes.nome"
+            required
+            #nome="ngModel"
+          />
+
+          <div *ngIf="nome.errors && f.submitted">
+            <app-mensagem
+            *ngIf="nome.errors['required']"
+            mensagem="Nome é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group py-2">
+          <label for="rg">RG</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Digite aqui seu RG."
+            name="rg"
+            [(ngModel)]="clientes.rg"
+            required
+            #rg="ngModel"
+          />
+
+          <div *ngIf="rg.errors && f.submitted">
+            <app-mensagem
+            *ngIf="rg.errors['required']"
+            mensagem="RG é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group py-2">
+          <label for="dataNascimento">Data de Nascimento</label>
+          <input
+            type="date"
+            class="form-control"
+            name="dataNascimento"
+            [(ngModel)]="clientes.dataNascimento"
+            required
+            #dataNascimento="ngModel"
+          />
+
+          <div *ngIf="dataNascimento.errors && f.submitted">
+            <app-mensagem
+            *ngIf="dataNascimento.errors['required']"
+            mensagem="dataNascimento é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group py-2">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Digite aqui seu E-mail."
+            name="email"
+            [(ngModel)]="clientes.email"
+            required
+            #email="ngModel"
+          />
+
+          <div *ngIf="email.errors && f.submitted">
+            <app-mensagem
+            *ngIf="email.errors['required']"
+            mensagem="Email é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+        <div class="form-group py-3">
+          <button class="w-100 btn btn-lg btn-success btn-block"><i class="fas fa-edit"></i> Atualizar Dados</button>
+        </div>
+
+      </form>
+
+        </div>
+
+    </div>
+
+ </div>
+ </div>

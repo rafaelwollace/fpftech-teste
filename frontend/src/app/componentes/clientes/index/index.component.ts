@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Clientes } from 'src/app/model/clientes';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-index',
@@ -13,12 +14,13 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private clientesServices: ClientesService,
+    private toastr: ToastrService
 
     ) { }
 
 
     ngOnInit(): void {
-      this.clientesServices.getAll().subscribe((data: Clientes[])=>{
+        this.clientesServices.getAll().subscribe((data: Clientes[])=>{
         this.clientes = data;
       })
     }
@@ -27,7 +29,7 @@ export class IndexComponent implements OnInit {
     delete(id:number){
       this.clientesServices.delete(id).subscribe(res => {
            this.clientes = this.clientes.filter(item => item.id !== id);
-          //  this.toastr.error('Categoria Deletada Com Sucesso!!!');
+           this.toastr.error('Cliente Deletado Com Sucesso!!!');
       })
     }
 

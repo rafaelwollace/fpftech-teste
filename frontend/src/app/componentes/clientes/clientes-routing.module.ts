@@ -8,9 +8,9 @@ import { EditComponent } from './edit/edit.component';
 const routes: Routes = [
   { path: 'clientes', redirectTo: 'clientes/index', pathMatch: 'full'},
   { path: 'clientes/index', component: IndexComponent },
-  { path: 'clientes/:postId/view', component: ViewComponent },
+  { path: 'clientes/:id/view', component: ViewComponent },
   { path: 'clientes/create', component: CreateComponent },
-  { path: 'clientes/:postId/edit', component: EditComponent }
+  { path: 'clientes/:id/edit', component: EditComponent }
 ];
 
 

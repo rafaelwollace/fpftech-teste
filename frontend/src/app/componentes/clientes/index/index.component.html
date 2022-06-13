@@ -1,29 +1,50 @@
-<div class="row py-3">
+<div class="col-12 col-md-12 py-3">
 
-  <app-create></app-create>
+  <div class="card rounded-5 shadow">
+    <div class="card-header">
+      <h4 class="text-center">LISTA DE CLIENTES CADASTRADOS</h4>
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0">
+          <button class="btn btn-success"  href="#" [routerLink]="['/clientes/create']">
+              <i class='fas fa-plus-circle'></i><span> CADASTRAR</span>
+            </button>
+        </div>
+      </div>
+    </div>
 
-  <br/><br/>
-  <table  class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Rg</th>
-        <th scope="col">Data de Nascimento</th>
-        <th scope="col">Email</th>
-        <th scope="col">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
+    <br/>
+    <div class="card-body">
 
-      <tr *ngFor = "let row of clientes">
-        <td>{{row.id}}</td>
-        <td>{{ row.nome }}</td>
-        <td>{{row.rg}}</td>
-        <td>{{row.dataNascimento}}</td>
-        <td>{{row.email}}</td>
-        <td><button (click)="delete(row.id)" class="btn btn-sm btn-danger" type="button">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
+        <div class="table-wrapper">
+          <table class="table table-striped table-hover table-bordered table-content ">
+              <thead class="table-primary">
+              <tr class="center-align">
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Rg</th>
+                <th>Data de Nascimento</th>
+                <th>Email</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let row of clientes">
+                <td>{{row.id}}</td>
+                <td>{{ row.nome }}</td>
+                <td>{{row.rg}}</td>
+                <td>{{row.dataNascimento}}</td>
+                <td>{{row.email}}</td>
+                <td>
+                  <a  class="btn btn-primary m-1"  href="#" [routerLink]="['/clientes/', row.id,'view']"><i class="far fa-eye"></i></a>
+                  <a  class="btn btn-warning m-1" [routerLink]="['/clientes/', row.id, 'edit']"><i class="fas fa-edit"></i></a>
+                  <button type="button" class="btn btn-danger" (click)="delete(row.id)"><i class="far fa-trash-alt"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td *ngIf="clientes.length == 0" colspan="6">Sem Dados Cadastrado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+    </div>
