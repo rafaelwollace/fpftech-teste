@@ -1,7 +1,7 @@
 # fpf-teste
 _____________________________________________________________________________________________________________________________________________________________________
 # BACKEND
-BACKEND API, NESTA API ESTOU USANDO SEQUELIZE E SEQUELIZE CLI, MIGRATIONS, SEED, SWAGGER, DOTENV, MYSQL.
+BACKEND API, NESTA API ESTOU USANDO SEQUELIZE E SEQUELIZE CLI, MIGRATIONS, SEED, SWAGGER,JAVASCRIPT, DOTENV, MYSQL.
 
 # BANCO 
 RENOMEAR O ARQUIVO NA RAIZ .env.example para .env 
