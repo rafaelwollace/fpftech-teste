@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produtos } from 'src/app/model/produtos';
 import { ProdutosService } from 'src/app/services/produtos.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +14,7 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private produtosServices: ProdutosService,
-
+    private toastr: ToastrService
     ) { }
 
 
@@ -24,11 +25,15 @@ export class IndexComponent implements OnInit {
     }
 
 
-    delete(id:number){
-      this.produtosServices.delete(id).subscribe(res => {
-           this.produtos = this.produtos.filter(item => item.id !== id);
-          //  this.toastr.error('Categoria Deletada Com Sucesso!!!');
-      })
+    delete(id:number): void {
+      this.produtosServices.delete(id)
+        .subscribe({
+          next: (res) => {
+            this.produtos = this.produtos.filter(item => item.id !== id);
+            this.toastr.error('Produto Deletado Com Sucesso!!!');
+          },
+          error: (e) => this.toastr.warning('Atenção, Cadastro não pode ser excluído possui relacionamento!')
+        });
     }
 
 }

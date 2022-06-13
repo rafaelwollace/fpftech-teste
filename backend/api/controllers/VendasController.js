@@ -1,5 +1,9 @@
 const Services = require('../services/Services')
+const VendasServices = require('../services/VendasServices');
+
 const vendasServices = new Services('Vendas')
+const vendasServicesC = new VendasServices()
+
 const moment = require("moment");
 
 
@@ -7,7 +11,7 @@ class VendasController {
 
   static async read(req, res) {
     try {
-      const read = await vendasServices.read()
+      const read = await vendasServicesC.read()
       return res.status(200).json(read)
     } catch (error) {
       return res.status(500).json(error.message)
@@ -18,7 +22,7 @@ class VendasController {
   static async readOne(req, res) {  
     const { id } = req.params
     try {
-      const oneCli = await vendasServices.readOne({ id })
+      const oneCli = await vendasServicesC.readOne({ id })
       return res.status(200).json(oneCli)
     } catch (error) {
       return res.status(500).json(error.message)

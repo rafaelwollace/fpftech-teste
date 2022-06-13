@@ -6,7 +6,9 @@ import { EditComponent } from './edit/edit.component';
 import { IndexComponent } from './index/index.component';
 import { CreateComponent } from './create/create.component';
 import { ViewComponent } from './view/view.component';
-
+import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { MensagemModule } from '../includes/mensagem/mensagem.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,9 @@ import { ViewComponent } from './view/view.component';
   ],
   imports: [
     CommonModule,
+    MensagemModule,
+    FormsModule,
+    ToastrModule.forRoot(),
     ProdutosRoutingModule
   ]
 })

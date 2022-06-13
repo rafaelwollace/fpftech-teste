@@ -47,7 +47,7 @@ export class EditComponent implements OnInit {
         this.isFailed = false;
         this.isSuccessful = true;
         this.router.navigateByUrl('/clientes/index');
-        this.toastr.success('Cadastro ID:' +this.id+ ' Atualizado Com Sucesso!!!');
+        this.toastr.success('Cliente ID:' +this.id+ 'Foi Atualizado!');
       },
       error: err => {
         this.toastr.error(err.error.message);

@@ -22,7 +22,6 @@ export class CreateComponent implements OnInit {
   isFailed = false;
   errorMessage = '';
 
-  public clientes: Clientes[] = [];
 
   constructor(
     private clientesServices: ClientesService,
@@ -30,11 +29,7 @@ export class CreateComponent implements OnInit {
     private router: Router
     ) { }
 
-  ngOnInit(): void {
-        this.clientesServices.getAll().subscribe((data: Clientes[])=>{
-        this.clientes = data;
-      })
-    }
+    ngOnInit(): void {}
 
   onSubmit(): void {
     const { nome, rg, dataNascimento, email } = this.form;
@@ -44,7 +39,7 @@ export class CreateComponent implements OnInit {
         this.isFailed = false;
         this.isSuccessful = true;
         this.router.navigateByUrl('clientes');
-        this.toastr.success('Cadastro Efetuado Com Sucesso!!!');
+        this.toastr.success('Cliente Cadastrado Com Sucesso!!!');
       },
       error: err => {
         this.toastr.error(err.error.message);

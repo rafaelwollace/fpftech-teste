@@ -1,1 +1,64 @@
-<p>create works!</p>
+<div class="row justify-content-center py-3">
+  <div class="col-12 col-md-8">
+      <div class="card rounded-5 shadow">
+          <div class="card-header">
+              <h4 class="text-center">CADASTRO DE VENDA</h4>
+              <div class="position-relative">
+                  <div class="position-absolute top-0 end-0">
+                      <button class="btn btn-primary" href="#" [routerLink]="['/venda/index']"><i class="fa fa-arrow-left"></i><span> Voltar </span></button>
+                  </div>
+              </div>
+          </div>
+
+          <div class="card-body p-4 pt-5">
+              <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                  <div class="form-group">
+                      <label for="username">Cliente</label>
+                      <select [(ngModel)]="form.fk_clientes" name="fk_clientes" ng-init="ngModel='Cool'" required #fk_clientes="ngModel" class="form-control">
+                          <option *ngFor="let row of clientes" [value]="row.id">{{row.nome}}</option>
+                      </select>
+                  </div>
+
+                  <div *ngIf="fk_clientes.errors && f.submitted">
+                      <app-mensagem *ngIf="fk_clientes.errors['required']" mensagem="Cliente é um campo de preenchimento obrigatório."> </app-mensagem>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="username">Produto</label>
+                    <select [(ngModel)]="form.fk_produtos" name="fk_clientes" ng-init="ngModel='Cool'" required #fk_produtos="ngModel" class="form-control">
+                        <option *ngFor="let row of produtos" [value]="row.id">{{row.nomeProd}}</option>
+                    </select>
+                  </div>
+
+                  <div *ngIf="fk_produtos.errors && f.submitted">
+                      <app-mensagem *ngIf="fk_produtos.errors['required']" mensagem="Produto é um campo de preenchimento obrigatório."> </app-mensagem>
+                  </div>
+
+                  <div class="form-group py-2">
+                      <label for="quantidade">Quantidade</label>
+                      <input type="number" class="form-control" name="quantidade" [(ngModel)]="form.quantidade" required #quantidade="ngModel" />
+
+                      <div *ngIf="quantidade.errors && f.submitted">
+                          <app-mensagem *ngIf="quantidade.errors['required']" mensagem="Quantidade é um campo de preenchimento obrigatório."></app-mensagem>
+                      </div>
+                  </div>
+
+                  <div class="form-group py-2">
+                      <label for="email">Data Venda</label>
+                      <input type="date" class="form-control" name="dataVenda" [(ngModel)]="form.dataVenda" required #dataVenda="ngModel" />
+
+                      <div *ngIf="dataVenda.errors && f.submitted">
+                          <app-mensagem *ngIf="dataVenda.errors['required']" mensagem="Data da Venda é  obrigatório."></app-mensagem>
+                      </div>
+                  </div>
+
+                  <div class="form-group py-3">
+                      <div class="text-center">
+                          <button class="btn btn-success text"><i class="fa fa-check" aria-hidden="true"></i> Realizar Cadastro</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

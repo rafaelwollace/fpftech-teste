@@ -16,10 +16,19 @@ export class ProdutosService {
     return this.httpClient.get<Produtos[]>(baseUrl);
   }
 
+  find(id:number): Observable<any> {
+    return this.httpClient.get(`${baseUrl}/${id}`)
+  }
 
-  create(Name: string): Observable<any> {
+  create(nomeProd: string, preco: number, valorPromocao: number, descricao: string): Observable<any> {
     return this.httpClient.post(baseUrl, {
-      Name
+       nomeProd, preco, valorPromocao, descricao
+    });
+  }
+
+  update(id: number, nomeProd: string, preco: number, valorPromocao: number, descricao: string): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/${id}`, {
+      nomeProd, preco, valorPromocao, descricao
     });
   }
 

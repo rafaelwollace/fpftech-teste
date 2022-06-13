@@ -1,1 +1,135 @@
-<p>create works!</p>
+<div class="row justify-content-center py-3">
+
+
+  <div class="col-12 col-md-8 ">
+
+      <div class="card rounded-5 shadow" >
+        <div class="card-header">
+          <h4 class="text-center">CADASTRO DE PRODUTOS</h4>
+          <div class="position-relative">
+            <div class="position-absolute top-0 end-0">
+              <button class="btn btn-primary"  href="#" [routerLink]="['/produtos/index']">
+                <i class='fa fa-arrow-left'></i><span> Voltar </span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card-body   p-4 pt-5">
+          <form
+          *ngIf="!isSuccessful"
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+      >
+
+
+        <div class="form-group">
+          <label for="nomeProd">Produto</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Digite aqui seu Produto."
+            name="nomeProd"
+            [(ngModel)]="form.nomeProd"
+            required
+            #nomeProd="ngModel"
+          />
+
+          <div *ngIf="nomeProd.errors && f.submitted">
+            <app-mensagem
+            *ngIf="nomeProd.errors['required']"
+            mensagem="Produto é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group py-2">
+          <label for="preco">Valor</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Digite aqui o Valor do Produto."
+            name="preco"
+            [(ngModel)]="form.preco"
+            required
+            #preco="ngModel"
+          />
+
+          <div *ngIf="preco.errors && f.submitted">
+            <app-mensagem
+            *ngIf="preco.errors['required']"
+            mensagem="Valor é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group py-2">
+          <label for="valorPromocao">Valor Promocional</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valorPromocao"
+            placeholder="Digite aqui o Valor Promocional."
+            [(ngModel)]="form.valorPromocao"
+            required
+            #valorPromocao="ngModel"
+          />
+
+          <div *ngIf="valorPromocao.errors && f.submitted">
+            <app-mensagem
+            *ngIf="valorPromocao.errors['required']"
+            mensagem="Valor Promocional é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group py-2">
+          <label for="descricao">Descrição</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Digite descrição do Produto."
+            name="descricao"
+            [(ngModel)]="form.descricao"
+            required
+            #descricao="ngModel"
+          />
+
+          <div *ngIf="descricao.errors && f.submitted">
+            <app-mensagem
+            *ngIf="descricao.errors['required']"
+            mensagem="Descrição é um campo de preenchimento obrigatório."
+          ></app-mensagem>
+
+          </div>
+
+        </div>
+
+        <div class="form-group py-3">
+          <div class="text-center">
+            <button  class="btn btn-success text " >
+              <i class="fa fa-check" aria-hidden="true"></i> Realizar Cadastro
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+        </div>
+
+    </div>
+
+ </div>
+ </div>

@@ -5,35 +5,35 @@ module.exports = {
       await queryInterface.bulkInsert('clientes', [
         {
           nome: 'Rafael Cunha',
-          dataNascimento: 2002-12-25,
+          dataNascimento: '1988-06-05',
           email: 'rafael.wfc@gmail.com',
           rg: 20337529
 
         },
         {
           nome: 'Rafaella Cunha',
-          dataNascimento: 2012-10-18,
+          dataNascimento: '2021-11-01',
           email: 'rafaellac@gmail.com',
           rg: 2665165
 
         },
         {
           nome: 'Tayanne Cunha',
-          dataNascimento: 1988-10-10,
+          dataNascimento: '1996-12-01',
           email: 'tayanne@gmail.com',
           rg: 8554955
 
         },
         {
           nome: 'Deyse Cunha',
-          dataNascimento: 1996-12-10,
+          dataNascimento: '1985-07-15',
           email: 'deyse@gmail.com',
           rg: 6522169
 
         },
         {
           nome: 'Janete Cunha',
-          dataNascimento: 2021-12-22,
+          dataNascimento: '1975-06-01',
           email: 'janete@gmail.com',
           rg: 5522655
 

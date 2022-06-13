@@ -1,1 +1,50 @@
-<p>index works!</p>
+<div class="col-12 col-md-12 py-3">
+
+  <div class="card rounded-5 shadow">
+    <div class="card-header">
+      <h4 class="text-center">LISTA DE VENDAS</h4>
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0">
+          <button class="btn btn-success"  href="#" [routerLink]="['/vendas/create']">
+              <i class='fas fa-plus-circle'></i><span> CADASTRAR</span>
+            </button>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+    <div class="card-body">
+
+        <div class="table-wrapper">
+          <table class="table table-striped table-hover table-bordered table-content ">
+              <thead class="table-primary">
+              <tr class="center-align">
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Data da Venda</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let row of vendas">
+                <td>{{row.id}}</td>
+                <td>{{row.Cliente.nome }}</td>
+                <td>{{row.Produto.nomeProd }}</td>
+                <td>{{row.id}}</td>
+                <td>{{row.dataVenda}}</td>
+                <td  style="width: 180px;">
+                  <a  class="btn btn-primary m-1"  href="#" [routerLink]="['/vendas/', row.id,'view']"><i class="far fa-eye"></i></a>
+                  <a  class="btn btn-warning m-1" [routerLink]="['/vendas/', row.id, 'edit']"><i class="fas fa-edit"></i></a>
+                  <button type="button" class="btn btn-danger" (click)="delete(row.id)"><i class="far fa-trash-alt"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td *ngIf="vendas.length == 0" colspan="6">Sem Dados Cadastrado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+    </div>

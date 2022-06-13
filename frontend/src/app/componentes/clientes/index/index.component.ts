@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class IndexComponent implements OnInit {
 
   clientes: Clientes[] = [];
+  errorMessage = '';
 
   constructor(
     private clientesServices: ClientesService,
@@ -25,12 +26,18 @@ export class IndexComponent implements OnInit {
       })
     }
 
-
-    delete(id:number){
-      this.clientesServices.delete(id).subscribe(res => {
-           this.clientes = this.clientes.filter(item => item.id !== id);
-           this.toastr.error('Cliente Deletado Com Sucesso!!!');
-      })
+    delete(id:number): void {
+      this.clientesServices.delete(id)
+        .subscribe({
+          next: (res) => {
+            this.clientes = this.clientes.filter(item => item.id !== id);
+            this.toastr.error('Cliente Deletado Com Sucesso!!!');
+          },
+          error: (e) => this.toastr.warning('Atenção, Cadastro não pode ser excluído possui relacionamento!')
+        });
     }
+
+
+
 
 }
