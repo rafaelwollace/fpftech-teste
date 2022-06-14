@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Produtos } from '../model/produtos';
 
 
-const baseUrl = 'https://fpf-backend.herokuapp.com/api/produtos';
+const baseUrl = 'http://localhost:3000/api/produtos';
 @Injectable({
   providedIn: 'root'
 })
