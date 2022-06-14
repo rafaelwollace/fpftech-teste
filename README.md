@@ -1,5 +1,12 @@
 # fpf-teste
 _____________________________________________________________________________________________________________________________________________________________________
+# PROJETO ONLINE NO HEROKU
+FRONTEND
+https://fpf-frontend.herokuapp.com/
+
+BACKEND
+https://fpf-backend.herokuapp.com/
+
 # BACKEND
 BACKEND API, NESTA API ESTOU USANDO SEQUELIZE E SEQUELIZE CLI, MIGRATIONS, SEED, SWAGGER,JAVASCRIPT, DOTENV, MYSQL.
 
