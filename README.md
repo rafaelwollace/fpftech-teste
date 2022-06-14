@@ -7,6 +7,12 @@ https://fpf-frontend.herokuapp.com/
 BACKEND
 https://fpf-backend.herokuapp.com/
 
+# DOCKER
+FRONTEND
+
+BACKEND
+https://hub.docker.com/r/f4euz1n/fpf-backend/tags
+
 # BACKEND
 BACKEND API, NESTA API ESTOU USANDO SEQUELIZE E SEQUELIZE CLI, MIGRATIONS, SEED, SWAGGER,JAVASCRIPT, DOTENV, MYSQL.
 
@@ -28,6 +34,7 @@ RENOMEAR O ARQUIVO NA RAIZ .env.example para .env
  - http://localhost:3000/
   ____________________________________________________________________________________________________________________________________________________________________
 # FRONTEND
+ANGULAR, BOOSTRAP
 
 # INSTALANDO DEPENDÊNCIAS - FRONTEND
   ENTRE NA PASTA FRONTEND
