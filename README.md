@@ -9,7 +9,7 @@ https://fpf-backend.herokuapp.com/
 
 # DOCKER
 FRONTEND - porta 4200
-https://hub.docker.com/repository/docker/f4euz1n/fpf-frontend
+https://hub.docker.com/r/f4euz1n/fpf-frontend/tags
 
 BACKEND - porta 3000
 https://hub.docker.com/r/f4euz1n/fpf-backend/tags
